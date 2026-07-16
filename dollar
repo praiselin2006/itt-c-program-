@@ -1,0 +1,11 @@
+#include<stdio.h>
+int main ()
+{
+   float rup,dol;
+   float rate = 83.50;
+   printf("Enter the rupees:");
+   scanf("%f",&rup);
+   dol=rup/rate;
+   printf("%2f INRis equal to %2f USD \n", rup,dol);
+   return 0;
+}
