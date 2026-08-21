@@ -1,0 +1,10 @@
+bool isIsomorphic(char* s, char* t){
+	if(!(s&&t))
+		return false;
+	char *spt = s, *tpt=t;
+	while(*spt != '\0'){
+		if( strchr(s, *spt++)-s != strchr(t, *tpt++)-t)
+			return false;
+	}
+	return true;
+}
