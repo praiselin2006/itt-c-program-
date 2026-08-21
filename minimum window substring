@@ -1,0 +1,11 @@
+char* minWindow(char* s, char* t) {
+    int tChars['z' + 1] = {0}, count = 0, minLen = INT_MAX;
+    char* p = s, *q = s;
+    while (t[count]) tChars[t[count++]]++;  //ABCB -> tChars = {1 2 1}: the amounts of chars we need; count = 4 here: the total amount
+    while (*q) {                  
+        if (-- tChars[*q++] >= 0)      count--; 
+        while (tChars[*p] < 0)         tChars[*p++]++;
+        if (!count && q - p < minLen)  minLen = q - (s = p);
+    }
+    return !(*(s + (minLen == INT_MAX ? 0 : minLen)) = 0) ? s : s;
+}
