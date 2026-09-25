@@ -1,0 +1,29 @@
+int charToInt(char* arr,int k){
+    int res = 0;
+    // Each iteration multiple the res with 10 and add current number
+    // We get the int value of the current number by subtracting '0'
+    for(int i = 0; i < k;i++){
+        res = (res * 10) + (arr[i] - '0');
+    }
+    return res;
+}
+int divisorSubstrings(int num, int k) {
+    // Get the number of digits in the num
+    int digits = (int)(log10(num)) + 1;
+    int index = 0,count = 0;
+    // Create and store the num in to a char buffer
+    // Size is count of digits + 1 for the NULL terminator
+    char buf[digits + 1];
+    sprintf(buf,"%d",num);
+    
+    // Loop until we reach the last digit
+    while(index + k <= digits){
+        // Compute the current divisor
+        int divisor = charToInt(&buf[index],k);
+        // Makes sure divisor is not 0 and test it 
+        if((divisor != 0) && (num % divisor == 0))
+            count++;
+        index++;
+    }
+    return count;
+}
