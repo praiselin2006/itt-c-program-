@@ -1,0 +1,16 @@
+static int cmpInt(const void* a, const void* b){
+    int x = *(const int*) a, y = *(const int*) b;
+    return (x > y) - (x < y);
+}
+int minimumDifference(int* nums, int numsSize, int k) {
+    if (k == 1)
+        return 0;
+    qsort(nums, numsSize, sizeof(int), cmpInt);
+    int res = INT_MAX;
+    for (int i = 0; i <= numsSize - k; i++){
+        int diff = nums[i + k - 1] - nums[i];
+        if (diff < res)
+            res = diff;
+    }
+    return res;
+}
