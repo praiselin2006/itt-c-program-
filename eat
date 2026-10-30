@@ -1,0 +1,26 @@
+int countStudents(int* students, int studentsSize, int* sandwiches, int sandwichesSize) {
+    
+    int studentone = 0;
+    int studentzero = 0; 
+    
+    for(int i = 0; i<studentsSize; i++)
+    {
+        if(students[i]) studentone++;
+        else studentzero++;
+    }
+
+    for(int i = 0; i<sandwichesSize; i++)
+    {
+        if (sandwiches[i])
+        {
+            if(studentone) studentone --; else break;
+        }
+        else
+        {
+            if(studentzero) studentzero --; else break;
+        }
+    }
+
+    return studentone + studentzero;
+
+}
